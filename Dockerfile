@@ -52,3 +52,9 @@ RUN apt-get update \
   && pip3 install --upgrade pip
 
 # Install bedtools
+RUN wget https://github.com/arq5x/bedtools2/releases/download/v2.29.1/bedtools-2.29.1.tar.gz && \
+	tar -zxvf bedtools-2.29.1.tar.gz && \
+	cd bedtools2 && \
+	make
+
+ENV PATH=${PATH}:/usr/src/bedtools2/bin/
