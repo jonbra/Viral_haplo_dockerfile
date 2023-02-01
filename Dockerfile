@@ -32,8 +32,15 @@ RUN wget https://github.com/samtools/bcftools/releases/download/1.15.1/bcftools-
 ENV PATH=${PATH}:/usr/src/bcftools-1.15.1
 
 # Install Tanoti mapper from https://github.com/vbsreenu/Tanoti
+RUN wget https://github.com/vbsreenu/Tanoti/archive/refs/heads/master.zip && \
+	unzip master.zip && \
+	rm master.zip && \
+	cd Tanoti-master/src && \
+	bash compile_tanoti.sh && \
+	cp * /usr/bin/
+
 # Copy Tanoti
-COPY Tanoti/bin/ /usr/bin/
+#COPY Tanoti-master/src/ /usr/bin/
 RUN chmod +x /usr/bin/*
 
 # Install Bowtie2
@@ -58,3 +65,18 @@ RUN wget https://github.com/arq5x/bedtools2/releases/download/v2.29.1/bedtools-2
 	make
 
 ENV PATH=${PATH}:/usr/src/bedtools2/bin/
+
+# Install OpenJDK-11 (see here https://stackoverflow.com/questions/31196567/installing-java-in-docker-image)
+RUN apt-get install -y openjdk-11-jdk && \
+    apt-get install -y ant && \
+    apt-get clean;
+    
+# Fix certificate issues
+RUN apt-get update && \
+    apt-get install ca-certificates-java && \
+    apt-get clean && \
+    update-ca-certificates -f;
+
+# Setup JAVA_HOME -- useful for docker commandline
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/
+RUN export JAVA_HOME
