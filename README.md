@@ -11,4 +11,6 @@ Docker image based on Ubuntu 18.04. Image contains the following software:
 Get the image from Docker Hub by running
 ```
 docker pull jonbra/viral_haplo:1.3
-```
+```  
+
+Link do Docker Hub image: [https://hub.docker.com/repository/docker/jonbra/viral_haplo/general](https://hub.docker.com/repository/docker/jonbra/viral_haplo/general)
