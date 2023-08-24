@@ -37,10 +37,8 @@ RUN wget https://github.com/vbsreenu/Tanoti/archive/refs/heads/master.zip && \
 	rm master.zip && \
 	cd Tanoti-master/src && \
 	bash compile_tanoti.sh && \
-	cp * /usr/bin/
+	cp ../bin* /usr/bin/
 
-# Copy Tanoti
-#COPY Tanoti-master/src/ /usr/bin/
 RUN chmod +x /usr/bin/*
 
 # Install Bowtie2
