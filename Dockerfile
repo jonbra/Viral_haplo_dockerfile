@@ -37,7 +37,7 @@ RUN wget https://github.com/vbsreenu/Tanoti/archive/refs/heads/master.zip && \
 	rm master.zip && \
 	cd Tanoti-master/src && \
 	bash compile_tanoti.sh && \
-	cp ../bin* /usr/bin/
+	cp ../bin/* /usr/bin/
 
 RUN chmod +x /usr/bin/*
 
