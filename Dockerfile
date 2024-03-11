@@ -74,16 +74,10 @@ RUN cd /usr/src/ && \
 	rm master.zip && \
 	cd Tanoti-master/src && \
 	bash compile_tanoti.sh && \
-<<<<<<< HEAD
-	cp ../bin/* /usr/bin/
-
-RUN chmod +x /usr/bin/*
-=======
 	cp * /usr/src/
 
 RUN chmod +x /usr/src/*
 ENV PATH=${PATH}:/usr/src/
->>>>>>> b94dcd6 (Bump Ubuntu and java versions)
 
 # Install Bowtie2
 RUN cd /usr/src/ && \
@@ -93,8 +87,6 @@ RUN cd /usr/src/ && \
 	cd bowtie2-2.4.5-linux-x86_64
 
 ENV PATH=${PATH}:/usr/src/bowtie2-2.4.5-linux-x86_64
-
-
 
 # Install bedtools
 RUN cd /usr/src/ && \
@@ -108,7 +100,6 @@ ENV PATH=${PATH}:/usr/src/bedtools2/bin/
 # Install OpenJDK-18 (see here https://stackoverflow.com/questions/31196567/installing-java-in-docker-image)
 RUN apt-get update && \
     apt-get install -y openjdk-18-jdk && \
-#    apt-get install -y ant && \
     apt-get clean;
     
 # Fix certificate issues
